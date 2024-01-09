@@ -209,3 +209,54 @@ resource "aws_security_group" "ap_south_1_security_group" {
     Name = "ap_south_1_security_group"
   }
 }
+
+resource "aws_security_group" "ap_southeast_2_security_group" {
+  provider    = aws.ap_southeast_2
+  name        = "ap_southeast_2_security_group"
+  description = "ap_southeast_2 security group"
+  vpc_id      = aws_vpc.ap_southeast_2_vpc.id
+
+  # Allow inbound traffic from 99/*
+  ingress {
+    from_port   = 0
+    to_port     = 65535
+    protocol    = "tcp"
+    cidr_blocks = ["99.0.0.0/8"]
+  }
+
+  # Allow inbound traffic from 99/*
+  ingress {
+    from_port   = 0
+    to_port     = 65535
+    protocol    = "udp"
+    cidr_blocks = ["99.0.0.0/8"]
+  }
+
+  # Allow inbound ICMP traffic from 99/*
+  ingress {
+    from_port   = -1
+    to_port     = -1
+    protocol    = "icmp"
+    cidr_blocks = ["99.0.0.0/8"]
+  }
+
+  # Allow SSH for EC2 Connect or SSH from a terminal
+  ingress {
+    description = "SSH"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+
+  }
+  tags = {
+    Name = "ap_southeast_2_security_group"
+  }
+}

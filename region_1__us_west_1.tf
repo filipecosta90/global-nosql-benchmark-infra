@@ -43,6 +43,11 @@ resource "aws_route_table" "route_table_us_west_1" {
     cidr_block                = var.ap_south_1_subnet_cidr_block
     vpc_peering_connection_id = aws_vpc_peering_connection.ap_south_1.id
   }
+
+   route {
+    cidr_block                = var.ap_southeast_2_subnet_cidr_block
+    vpc_peering_connection_id = aws_vpc_peering_connection.ap_southeast_2.id
+  }
 }
 
 

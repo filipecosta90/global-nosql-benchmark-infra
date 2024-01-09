@@ -51,6 +51,15 @@ variable "ap_south_1_subnet_cidr_block" {
   default     = "99.3.15.0/24"
 }
 
+variable "ap_southeast_2_vpc_cidr_block" {
+  description = "Peer VPC Cidr Block"
+  default     = "99.4.0.0/16"
+}
+
+variable "ap_southeast_2_subnet_cidr_block" {
+  description = "ap_southeast_2 Subnet Cidr Block"
+  default     = "99.4.20.0/24"
+}
 
 variable "us_west_1_availability_zone" {
   description = "az"
@@ -70,6 +79,11 @@ variable "sa_east_1_availability_zone" {
 variable "ap_south_1_availability_zone" {
   description = "az"
   default     = "ap-south-1a"
+}
+
+variable "ap_southeast_2_availability_zone" {
+  description = "az"
+  default     = "ap-southeast-2a"
 }
 
 variable "instance_type" {
@@ -101,10 +115,10 @@ variable "ami_id_ap_south_1" {
   default = "ami-03f4878755434977f"
 }
 
-# ap-northeast-1 Jammy Jellyfish	22.04 LTS 20231207
-variable "ami_id_ap_northeast_1" {
+# ap-southeast-2 Jammy Jellyfish	22.04 LTS 20231207
+variable "ami_id_ap_southeast_2" {
   type    = string
-  default = "ami-07c589821f2b353aa"
+  default = "ami-04f5097681773b989"
 }
 
 
@@ -130,8 +144,8 @@ variable "ami_key_pair_name_ap_south_1" {
 }
 
 
-variable "ami_key_pair_name_ap_northeast_1" {
+variable "ami_key_pair_name_ap_southeast_2" {
   type    = string
-  default = "perf-ap-northeast-1"
+  default = "perf-ap-southeast-2"
 }
 

@@ -27,14 +27,24 @@ provider "aws" {
   region  = "ap-south-1"
 }
 
-
 provider "aws" {
   alias   = "ap_northeast_1"
   profile = "default"
   region  = "ap-northeast-1"
 }
 
+provider "aws" {
+  alias   = "ap_southeast_1"
+  profile = "default"
+  region  = "ap-southeast-1"
+}
 
+
+provider "aws" {
+  alias   = "ap_southeast_2"
+  profile = "default"
+  region  = "ap-southeast-2"
+}
 
 
 
