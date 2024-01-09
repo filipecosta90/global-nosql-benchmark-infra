@@ -59,10 +59,10 @@ resource "aws_instance" "sa_east_1_db" {
   ami           = var.ami_id_sa_east_1
   instance_type = var.instance_type
   # This is an existing key pair that has already been created in the specified region
-  key_name        = var.ami_key_pair_name_sa_east_1
+  key_name               = var.ami_key_pair_name_sa_east_1
   vpc_security_group_ids = [aws_security_group.sa_east_1_security_group.id]
-  subnet_id       = aws_subnet.subnet_sa_east_1.id
-  monitoring      = false
+  subnet_id              = aws_subnet.subnet_sa_east_1.id
+  monitoring             = false
 
   tags = {
     Name = "sa_east_1_db"
@@ -75,10 +75,10 @@ resource "aws_instance" "sa_east_1_client" {
   ami           = var.ami_id_sa_east_1
   instance_type = var.instance_type
   # This is an existing key pair that has already been created in the specified region
-  key_name        = var.ami_key_pair_name_sa_east_1
+  key_name               = var.ami_key_pair_name_sa_east_1
   vpc_security_group_ids = [aws_security_group.sa_east_1_security_group.id]
-  subnet_id       = aws_subnet.subnet_sa_east_1.id
-  monitoring      = false
+  subnet_id              = aws_subnet.subnet_sa_east_1.id
+  monitoring             = false
 
   tags = {
     Name = "sa_east_1_client"

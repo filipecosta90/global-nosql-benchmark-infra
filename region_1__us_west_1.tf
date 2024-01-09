@@ -22,7 +22,7 @@ resource "aws_route_table" "route_table_us_west_1" {
   vpc_id   = aws_vpc.us_west_1_vpc.id
   provider = aws.us_west_1
 
-  
+
   route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.us_west_1-igw.id
@@ -37,6 +37,11 @@ resource "aws_route_table" "route_table_us_west_1" {
   route {
     cidr_block                = var.sa_east_1_subnet_cidr_block
     vpc_peering_connection_id = aws_vpc_peering_connection.sa_east_1.id
+  }
+
+  route {
+    cidr_block                = var.ap_south_1_subnet_cidr_block
+    vpc_peering_connection_id = aws_vpc_peering_connection.ap_south_1.id
   }
 }
 
@@ -65,10 +70,10 @@ resource "aws_instance" "us_west_1_db" {
   ami           = var.ami_id_us_west_1
   instance_type = var.instance_type
   # This is an existing key pair that has already been created in the specified region
-  key_name        = var.ami_key_pair_name_us_west_1
+  key_name               = var.ami_key_pair_name_us_west_1
   vpc_security_group_ids = [aws_security_group.us_west_1_security_group.id]
-  subnet_id       = aws_subnet.subnet_us_west_1.id
-  monitoring      = false
+  subnet_id              = aws_subnet.subnet_us_west_1.id
+  monitoring             = false
 
   tags = {
     Name = "us_west_1_db"
@@ -81,10 +86,10 @@ resource "aws_instance" "us_west_1_client" {
   ami           = var.ami_id_us_west_1
   instance_type = var.instance_type
   # This is an existing key pair that has already been created in the specified region
-  key_name        = var.ami_key_pair_name_us_west_1
+  key_name               = var.ami_key_pair_name_us_west_1
   vpc_security_group_ids = [aws_security_group.us_west_1_security_group.id]
-  subnet_id       = aws_subnet.subnet_us_west_1.id
-  monitoring      = false
+  subnet_id              = aws_subnet.subnet_us_west_1.id
+  monitoring             = false
 
   tags = {
     Name = "us_west_1_client"

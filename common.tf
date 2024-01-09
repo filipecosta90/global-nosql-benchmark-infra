@@ -22,9 +22,9 @@ provider "aws" {
 
 
 provider "aws" {
-  alias   = "af_south_1"
+  alias   = "ap_south_1"
   profile = "default"
-  region  = "af-south-1"
+  region  = "ap-south-1"
 }
 
 
